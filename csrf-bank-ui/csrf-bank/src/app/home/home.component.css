@@ -1,0 +1,24 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    text-align: center;
+    background-color: red;
+}
+
+h2 {
+    text-align: center;
+}
+
+.services {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+}
+
+button {
+    font-size: 1.5rem;
+}
