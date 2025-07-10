@@ -2,6 +2,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,8 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
+
+  private baseUrl = environment.gatewayUrl;
 
   constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) { }
 
@@ -31,7 +34,7 @@ export class LoginComponent implements OnInit {
 
     if (this.loginForm.valid) {
       const formData = this.loginForm.value;
-      this.http.post('http://localhost:8080/bank/login', formData, {
+      this.http.post(`${this.baseUrl}/bank/login`, formData, {
         withCredentials: true
       }).subscribe({
         next: () => {
