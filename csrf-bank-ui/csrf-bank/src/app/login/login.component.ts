@@ -34,7 +34,9 @@ export class LoginComponent implements OnInit {
 
     if (this.loginForm.valid) {
       const formData = this.loginForm.value;
-      this.http.post(`${this.baseUrl}/bank/login`, formData).subscribe({
+      this.http.post(`${this.baseUrl}/projects/all`, formData, {
+        withCredentials: true
+      }).subscribe({
         next: () => {
           this.router.navigate(['/home']);
         },
